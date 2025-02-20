@@ -1,0 +1,54 @@
+version: '3.8'
+
+services:
+  redis:
+    image: 'redis:alpine'
+    ports:
+      - '6379:6379'
+    restart: always
+    expose:
+      - '6379'
+
+  wordpress:
+    image: wordpress
+    restart: always
+    ports:
+      - 8080:80
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_USER: exampleuser
+      WORDPRESS_DB_PASSWORD: examplepass
+      WORDPRESS_DB_NAME: exampledb
+      WORDPRESS_CONFIG_EXTRA: |
+        define('WP_HOME', 'http://localhost:8080');
+        define('WP_SITEURL', 'http://localhost:8080');
+    volumes:
+      - wordpress:/var/www/html
+
+  db:
+    image: mysql:8.0
+    restart: always
+    environment:
+      MYSQL_DATABASE: exampledb
+      MYSQL_USER: exampleuser
+      MYSQL_PASSWORD: examplepass
+      MYSQL_RANDOM_ROOT_PASSWORD: '1'
+    volumes:
+      - db:/var/lib/mysql
+
+  testek6:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      - wordpress
+    volumes:
+      - ./testes:/testes
+    stdin_open: true
+    tty: true
+    entrypoint: ["/bin/sh", "-c", "tail -f /dev/null"]
+
+
+volumes:
+  wordpress:
+  db:
