@@ -92,55 +92,65 @@ volumes:
 #### Sem Redis  
 ![Smoke Test Sem Redis](./img/smoke.jpeg)  
 
-- **http_req_duration** (Duração média das requisições):  _XX.XXms_  
-- **p(95)** (Percentil 95): _XX.XXms_
-- **http_req_failed** (Requisições falhas):   _XX.XXms_ 
-- **http_reqs** (Total de requisições):   _XX.XXms_
+- **http_req_duration** (Duração média das requisições):  **132.09ms**  
+- **p(95)** (Percentil 95): **196.71ms**
+- **http_req_failed** (Requisições falhas):   **0.00%** 
+- **http_reqs** (Total de requisições):   **1420**
 
 #### Com Redis  
 ![Smoke Test Com Redis](./img/smokeredis.jpeg)  
 
-- **http_req_duration** (Duração média das requisições): _XX.XXms_  
-- **p(95)** (Percentil 95): _XX.XXms_  
-- **http_req_failed** (Requisições falhas): _X.XX%_  
-- **http_reqs** (Total de requisições): _XXXX_  
+- **http_req_duration** (Duração média das requisições): **151.42ms**  
+- **p(95)** (Percentil 95): **233.59ms**  
+- **http_req_failed** (Requisições falhas): **0.00%**  
+- **http_reqs** (Total de requisições): **1250**  
 
 ### 🔹 Simple Test  
 
 #### Sem Redis  
 ![Simple Test Sem Redis](./img/simple.jpeg)  
 
-- **http_req_duration** (Duração média das requisições): _XX.XXms_  
-- **p(95)** (Percentil 95): _XX.XXms_  
-- **http_req_failed** (Requisições falhas): _X.XX%_  
-- **http_reqs** (Total de requisições): _XXXX_  
+- **http_req_duration** (Duração média das requisições): **81.61ms**  
+- **p(95)** (Percentil 95): **81.61ms**  
+- **http_req_failed** (Requisições falhas): **0.00%**  
+- **http_reqs** (Total de requisições): **1**  
 
 #### Com Redis  
 ![Simple Test Com Redis](./img/simpleredis.jpeg)  
 
-- **http_req_duration** (Duração média das requisições): _XX.XXms_  
-- **p(95)** (Percentil 95): _XX.XXms_  
-- **http_req_failed** (Requisições falhas): _X.XX%_  
-- **http_reqs** (Total de requisições): _XXXX_  
+- **http_req_duration** (Duração média das requisições): **96.44ms**  
+- **p(95)** (Percentil 95): **96.44ms**  
+- **http_req_failed** (Requisições falhas): **0.00%**  
+- **http_reqs** (Total de requisições): **1**  
 
 ### 🔹 Load Test  
 
 #### Sem Redis  
 ![Load Test Sem Redis](./img/load.jpeg)  
 
-- **http_req_duration** (Duração média das requisições): _XX.XXms_  
-- **p(95)** (Percentil 95): _XX.XXms_  
-- **http_req_failed** (Requisições falhas): _X.XX%_  
-- **http_reqs** (Total de requisições): _XXXX_  
+- **http_req_duration** (Duração média das requisições): **1.2ms**  
+- **p(95)** (Percentil 95): **2.4ms**  
+- **http_req_failed** (Requisições falhas): **0.00%**  
+- **http_reqs** (Total de requisições): **2061**  
 
 #### Com Redis  
 ![Load Test Com Redis](./img/loadredis.jpeg)  
 
-- **http_req_duration** (Duração média das requisições): _XX.XXms_  
-- **p(95)** (Percentil 95): _XX.XXms_  
-- **http_req_failed** (Requisições falhas): _X.XX%_  
-- **http_reqs** (Total de requisições): _XXXX_  
+- **http_req_duration** (Duração média das requisições): **1.21ms**  
+- **p(95)** (Percentil 95): **2.75ms**  
+- **http_req_failed** (Requisições falhas): **0.00%**  
+- **http_reqs** (Total de requisições): **1935**  
+
+---
 
 ## 🏆 Conclusão  
 
-Os testes mostraram que a ativação do **Redis Object Cache** resultou em **melhor desempenho** nas requisições, com **tempos de resposta reduzidos** e maior eficiência no uso do banco de dados. 🚀  
+Os testes de desempenho realizados demonstraram que o uso do **Redis Object Cache** teve um impacto variável na performance das requisições ao WordPress.  
+
+- No **Smoke Test**, houve um pequeno aumento na **latência média** e no **percentil 95** com o Redis ativado, o que pode indicar um overhead inicial no cache.  
+- No **Simple Test**, os tempos de resposta foram ligeiramente maiores com o Redis, mas sem impacto significativo devido ao baixo número de requisições.  
+- No **Load Test**, o desempenho se manteve semelhante, com diferenças mínimas nos tempos de resposta e na quantidade de requisições processadas.  
+
+Embora o Redis não tenha apresentado ganhos expressivos em todos os cenários, ele ainda pode ser benéfico em aplicações de maior escala, reduzindo a carga no banco de dados e melhorando a consistência da resposta em situações de alto tráfego. 🚀  
+
+---
