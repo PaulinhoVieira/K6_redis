@@ -151,6 +151,6 @@ Os testes de desempenho realizados demonstraram que o uso do **Redis Object Cach
 - No **Simple Test**, os tempos de resposta foram ligeiramente maiores com o Redis, mas sem impacto significativo devido ao baixo número de requisições.  
 - No **Load Test**, o desempenho se manteve semelhante, com diferenças mínimas nos tempos de resposta e na quantidade de requisições processadas.  
 
-Embora o Redis não tenha apresentado ganhos expressivos em todos os cenários, ele ainda pode ser benéfico em aplicações de maior escala, reduzindo a carga no banco de dados e melhorando a consistência da resposta em situações de alto tráfego. 🚀  
+Embora o Redis não tenha apresentado ganhos expressivos em todos os cenários, ele ainda pode ser benéfico em aplicações de maior escala, reduzindo a carga no banco de dados e melhorando a consistência da resposta em situações de alto tráfego.
 
 ---
